@@ -1,80 +1,76 @@
 * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
 }
 
 .heading-primary {
-    padding: 0 10dvw;
-    margin: 2rem 0;
-    font-size: 60px;
+  padding: 0 10vw;
+  margin: 2rem 0;
+  font-size: 60px;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .container {
-    margin: 0 auto;
-    max-width: 60dvw;
-    display: flex;
-    justify-content: space-between;
-    gap: 40px;
+  margin: 0 auto;
+  max-width: 60vw;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
 }
 
 .heading-button {
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .name-num-list {
-    padding: 1rem;
-    border: 2px solid black;
+  padding: 1rem;
+  border: 2px solid black;
 
-    &> *:not(:last-child) {
-        margin-bottom: 5px;
-    }
+  & > *:not(:last-child) {
+    margin-bottom: 5px;
+  }
 }
 
 .heading-secondary {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .btn-refresh {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 20px;
-    cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .add-section {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
-.add-section > * {
+  & > *:not(:last-child) {
     display: block;
+  }
 }
 
 input {
-    padding: 7px 14px;
+  padding: 7px 14px;
 }
-
 
 .btn-submit {
-    display: inline-block;
-    align-self: flex-end;
-    justify-self: flex-end;
-    width: fit-content;
-    padding: 7px 14px;
-    cursor: pointer;
+  display: inline-block;
+  align-self: flex-end;
+  justify-self: flex-end;
+  width: fit-content;
+  padding: 7px 14px;
+  cursor: pointer;
 }
-
-
-
