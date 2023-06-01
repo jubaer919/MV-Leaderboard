@@ -1,29 +1,35 @@
-import axios from 'axios';
-
 let gameID;
 const body = document.querySelector('body');
 
-async function createGame(name) {
+const createGame = async (name) => {
   const baseURL = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/';
 
   try {
-    const response = await axios.post(baseURL, { name });
-    [, , , gameID] = response.data.result.split(' ');
+    const response = await fetch(baseURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name }),
+    });
+    const data = await response.json();
+    [, , , gameID] = data.result.split(' ');
 
     return gameID;
   } catch (error) {
     const h2 = document.createElement('h2');
-    h2.innerText = '404 error hapend';
+    h2.innerText = '404 error happened';
     body.appendChild(h2);
     throw error;
   }
-}
+};
 
-async function getScores() {
+const getScores = async () => {
   try {
     const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameID}/scores/`;
-    const response = await axios.get(url);
-    const scores = response.data.result;
+    const response = await fetch(url);
+    const data = await response.json();
+    const scores = data.result;
     const list = document.querySelector('.name-num-list');
     list.innerHTML = '';
     scores.forEach((person) => {
@@ -34,39 +40,42 @@ async function getScores() {
     });
   } catch (error) {
     const h2 = document.createElement('h2');
-    h2.innerText = '404 error hapend';
+    h2.innerText = '404 error happened';
     body.appendChild(h2);
   }
-}
+};
 
-async function submitScore(user, score) {
+const submitScore = async (user, score) => {
   try {
     const data = {
       user,
       score,
     };
     const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameID}/scores/`;
-    await axios.post(url, data);
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
 
-    // Clear input fields
     document.querySelector('.name-input').value = '';
     document.querySelector('.number-input').value = '';
   } catch (error) {
     const h2 = document.createElement('h2');
-    h2.innerText = '404 error hapend';
+    h2.innerText = '404 error happened';
     body.appendChild(h2);
   }
-}
+};
 
-async function main() {
+const main = async () => {
   try {
     const gameName = 'Your Game Name';
     gameID = await createGame(gameName);
 
-    // Refresh Button
     document.querySelector('.btn-refresh').addEventListener('click', getScores);
 
-    // Submit Button
     document.querySelector('.btn-submit').addEventListener('click', () => {
       const userInput = document.querySelector('.name-input');
       const scoreInput = document.querySelector('.number-input');
@@ -82,9 +91,9 @@ async function main() {
     });
   } catch (error) {
     const h2 = document.createElement('h2');
-    h2.innerText = '404 error hapend';
+    h2.innerText = '404 error happened';
     body.appendChild(h2);
   }
-}
+};
 
 export default main;
