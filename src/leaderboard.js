@@ -35,7 +35,7 @@ const getScores = async () => {
     scores.forEach((person) => {
       const listItem = document.createElement('li');
       listItem.classList.add('list-items');
-      listItem.innerHTML = `<span class="span-name">${person.user}:</span>  <span class="span-number">${person.score}</span>`;
+      listItem.innerHTML = `<span class="span-name">${person.user}</span> : <span class="span-number">${person.score}</span>`;
       list.appendChild(listItem);
     });
   } catch (error) {
@@ -71,7 +71,7 @@ const submitScore = async (user, score) => {
 
 const main = async () => {
   try {
-    const gameName = 'Your Game Name';
+    const gameName = 'Leaderboard game';
     gameID = await createGame(gameName);
 
     document.querySelector('.btn-refresh').addEventListener('click', getScores);
